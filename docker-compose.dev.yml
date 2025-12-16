@@ -1,0 +1,33 @@
+# =============================================================================
+# Docker Compose for RailWay Train Ticketing System
+# Development configuration with hot reloading
+# =============================================================================
+
+version: '3.8'
+
+services:
+  railway-app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: railway-ticketing-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount source code for hot reloading
+      - ./src:/app/src:ro
+      - ./public:/app/public:ro
+      - ./index.html:/app/index.html:ro
+      - ./vite.config.ts:/app/vite.config.ts:ro
+      - ./tailwind.config.js:/app/tailwind.config.js:ro
+      - ./postcss.config.js:/app/postcss.config.js:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+
+networks:
+  default:
+    name: railway-network-dev

@@ -1,0 +1,9 @@
+export { Home } from './Home';
+export { SearchResults } from './SearchResults';
+export { SeatSelection } from './SeatSelection';
+export { Booking } from './Booking';
+export { Payment } from './Payment';
+export { Confirmation } from './Confirmation';
+export { MyTickets } from './MyTickets';
+export { Login } from './Login';
+export { Register } from './Register';
