@@ -347,17 +347,84 @@ export function saveBooking(booking: import('../types').Booking): void {
   localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
 }
 
-export function cancelBooking(bookingId: string): boolean {
+export interface RefundResult {
+  success: boolean;
+  refundAmount: number;
+  refundPercentage: number;
+  reason: string;
+  estimatedDays: number;
+}
+
+export function calculateRefund(booking: import('../types').Booking): RefundResult {
+  const now = new Date();
+  const travelDate = new Date(booking.travelDate);
+  const hoursUntilTravel = (travelDate.getTime() - now.getTime()) / (1000 * 60 * 60);
+
+  let refundPercentage: number;
+  let reason: string;
+  let estimatedDays: number;
+
+  if (hoursUntilTravel > 48) {
+    // More than 48 hours before travel: 90% refund
+    refundPercentage = 90;
+    reason = 'Cancelled more than 48 hours before departure';
+    estimatedDays = 3;
+  } else if (hoursUntilTravel > 24) {
+    // 24-48 hours before travel: 75% refund
+    refundPercentage = 75;
+    reason = 'Cancelled 24-48 hours before departure';
+    estimatedDays = 5;
+  } else if (hoursUntilTravel > 6) {
+    // 6-24 hours before travel: 50% refund
+    refundPercentage = 50;
+    reason = 'Cancelled 6-24 hours before departure';
+    estimatedDays = 7;
+  } else if (hoursUntilTravel > 0) {
+    // Less than 6 hours before travel: 25% refund
+    refundPercentage = 25;
+    reason = 'Cancelled less than 6 hours before departure';
+    estimatedDays = 7;
+  } else {
+    // After departure: No refund
+    refundPercentage = 0;
+    reason = 'Cancellation after scheduled departure - no refund applicable';
+    estimatedDays = 0;
+  }
+
+  const refundAmount = Math.round((booking.totalAmount * refundPercentage) / 100);
+
+  return {
+    success: true,
+    refundAmount,
+    refundPercentage,
+    reason,
+    estimatedDays
+  };
+}
+
+export function cancelBooking(bookingId: string): RefundResult | null {
   const bookings = getStoredBookings();
   const index = bookings.findIndex(b => b.id === bookingId);
 
   if (index !== -1) {
+    const booking = bookings[index];
+    const refundResult = calculateRefund(booking);
+
     bookings[index].status = 'cancelled';
+    bookings[index].refund = {
+      amount: refundResult.refundAmount,
+      percentage: refundResult.refundPercentage,
+      status: refundResult.refundPercentage > 0 ? 'processing' : 'completed',
+      reason: refundResult.reason,
+      requestedAt: new Date().toISOString(),
+      estimatedDays: refundResult.estimatedDays
+    };
+
     localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
-    return true;
+    return refundResult;
   }
 
-  return false;
+  return null;
 }
 
 // ============================================

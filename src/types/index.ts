@@ -99,9 +99,22 @@ export interface Booking {
   status: BookingStatus;
   createdAt: string;
   paymentDetails?: PaymentDetails;
+  refund?: RefundDetails;
 }
 
 export type BookingStatus = 'pending' | 'confirmed' | 'cancelled';
+
+export type RefundStatus = 'pending' | 'processing' | 'completed' | 'failed';
+
+export interface RefundDetails {
+  amount: number;
+  percentage: number;
+  status: RefundStatus;
+  reason: string;
+  requestedAt: string;
+  processedAt?: string;
+  estimatedDays: number;
+}
 
 // ============================================
 // Payment Types

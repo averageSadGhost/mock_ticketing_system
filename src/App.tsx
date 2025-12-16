@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { BookingProvider } from './context/BookingContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './i18n';
 import { Layout } from './components/layout';
 import {
@@ -18,9 +19,10 @@ import {
 function App() {
   return (
     <Router>
-      <LanguageProvider>
-        <AuthProvider>
-          <BookingProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <BookingProvider>
           <Routes>
             {/* Auth pages without layout */}
             <Route path="/login" element={<Login />} />
@@ -84,9 +86,10 @@ function App() {
               }
             />
             </Routes>
-          </BookingProvider>
-        </AuthProvider>
-      </LanguageProvider>
+            </BookingProvider>
+          </AuthProvider>
+        </LanguageProvider>
+      </ThemeProvider>
     </Router>
   );
 }

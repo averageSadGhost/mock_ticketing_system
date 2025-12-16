@@ -47,8 +47,8 @@ export function TrainSearch() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.search.title}</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/30 p-6 md:p-8">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.search.title}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {/* Origin */}
@@ -69,10 +69,10 @@ export function TrainSearch() {
             <button
               type="button"
               onClick={handleSwapStations}
-              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               aria-label="Swap stations"
             >
-              <ArrowLeftRight className="w-5 h-5 text-gray-600" />
+              <ArrowLeftRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             </button>
           </div>
 
@@ -94,10 +94,10 @@ export function TrainSearch() {
             <button
               type="button"
               onClick={handleSwapStations}
-              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               aria-label="Swap stations"
             >
-              <ArrowLeftRight className="w-5 h-5 text-gray-600" />
+              <ArrowLeftRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             </button>
           </div>
         </div>
@@ -117,20 +117,20 @@ export function TrainSearch() {
 
           {/* Passengers */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               {t.search.passengers}
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 rtl:left-auto rtl:right-0 rtl:pr-3 rtl:pl-0">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 dark:text-gray-500 rtl:left-auto rtl:right-0 rtl:pr-3 rtl:pl-0">
                 <Users className="w-5 h-5" />
               </div>
               <select
                 value={passengers}
                 onChange={(e) => setPassengers(Number(e.target.value))}
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none bg-white text-gray-900 rtl:pr-10 rtl:pl-10"
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rtl:pr-10 rtl:pl-10"
               >
-                {[1, 2, 3, 4, 5, 6].map(num => (
-                  <option key={num} value={num} className="text-gray-900">
+                {Array.from({ length: 20 }, (_, i) => i + 1).map(num => (
+                  <option key={num} value={num} className="text-gray-900 dark:text-gray-100 dark:bg-gray-800">
                     {num} {num === 1 ? t.search.passenger : t.search.passengers}
                   </option>
                 ))}

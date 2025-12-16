@@ -68,15 +68,15 @@ export function Modal({
         {/* Modal content */}
         <div
           className={`
-            relative bg-white rounded-xl shadow-xl w-full ${sizeStyles[size]}
+            relative bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full ${sizeStyles[size]}
             transform transition-all duration-300 slide-up
           `}
         >
           {/* Header */}
           {(title || showCloseButton) && (
-            <div className="flex items-center justify-between p-4 border-b border-gray-100">
+            <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700">
               {title && (
-                <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h2>
               )}
               {showCloseButton && (
                 <Button

@@ -169,8 +169,30 @@ export const translations = {
       cancelledBookings: 'Cancelled Bookings',
       cancel: 'Cancel',
       cancelBooking: 'Cancel Booking',
-      cancelConfirm: 'Are you sure you want to cancel this booking? This action cannot be undone.',
+      cancelConfirm: 'Are you sure you want to cancel this booking?',
       keepBooking: 'Keep Booking',
+      confirmCancel: 'Confirm Cancellation',
+    },
+
+    // Refund
+    refund: {
+      title: 'Refund Information',
+      amount: 'Refund Amount',
+      percentage: 'Refund Percentage',
+      status: 'Status',
+      reason: 'Reason',
+      estimatedDays: 'Estimated Processing Time',
+      days: 'business days',
+      pending: 'Pending',
+      processing: 'Processing',
+      completed: 'Completed',
+      failed: 'Failed',
+      noRefund: 'No Refund',
+      refundPolicy: 'Refund Policy',
+      policyDetails: 'Cancellation more than 48h before: 90% refund. 24-48h: 75%. 6-24h: 50%. Less than 6h: 25%. After departure: No refund.',
+      willReceive: 'You will receive',
+      of: 'of',
+      originalAmount: 'original amount',
     },
 
     // Booking Summary
@@ -409,8 +431,30 @@ export const translations = {
       cancelledBookings: 'الحجوزات الملغاة',
       cancel: 'إلغاء',
       cancelBooking: 'إلغاء الحجز',
-      cancelConfirm: 'هل أنت متأكد من إلغاء هذا الحجز؟ لا يمكن التراجع عن هذا الإجراء.',
+      cancelConfirm: 'هل أنت متأكد من إلغاء هذا الحجز؟',
       keepBooking: 'الاحتفاظ بالحجز',
+      confirmCancel: 'تأكيد الإلغاء',
+    },
+
+    // Refund
+    refund: {
+      title: 'معلومات الاسترداد',
+      amount: 'مبلغ الاسترداد',
+      percentage: 'نسبة الاسترداد',
+      status: 'الحالة',
+      reason: 'السبب',
+      estimatedDays: 'وقت المعالجة المقدر',
+      days: 'أيام عمل',
+      pending: 'قيد الانتظار',
+      processing: 'قيد المعالجة',
+      completed: 'مكتمل',
+      failed: 'فشل',
+      noRefund: 'لا يوجد استرداد',
+      refundPolicy: 'سياسة الاسترداد',
+      policyDetails: 'الإلغاء قبل أكثر من 48 ساعة: استرداد 90%. 24-48 ساعة: 75%. 6-24 ساعة: 50%. أقل من 6 ساعات: 25%. بعد المغادرة: لا يوجد استرداد.',
+      willReceive: 'ستحصل على',
+      of: 'من',
+      originalAmount: 'المبلغ الأصلي',
     },
 
     // Booking Summary

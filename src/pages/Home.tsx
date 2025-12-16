@@ -36,13 +36,13 @@ export function Home() {
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-gray-950 to-transparent"></div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
             {t.home.whyChoose}
           </h2>
 
@@ -72,12 +72,12 @@ export function Home() {
       </section>
 
       {/* Popular Routes Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 dark:bg-gray-950">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
             {t.home.popularRoutes}
           </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
             {t.home.popularRoutesDesc}
           </p>
 
@@ -139,12 +139,12 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
-      <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-600">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center hover:shadow-lg dark:shadow-gray-900/30 transition-shadow">
+      <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-600 dark:text-primary-400">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-400">{description}</p>
     </div>
   );
 }
@@ -160,7 +160,7 @@ interface RouteCardProps {
 
 function RouteCard({ from, to, duration, price, image, startingFrom }: RouteCardProps) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow">
       <div
         className="h-40 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
@@ -175,8 +175,8 @@ function RouteCard({ from, to, duration, price, image, startingFrom }: RouteCard
         </div>
       </div>
       <div className="p-4 flex items-center justify-between">
-        <span className="text-gray-600">{startingFrom}</span>
-        <span className="text-xl font-bold text-primary-600">{price} EGP</span>
+        <span className="text-gray-600 dark:text-gray-400">{startingFrom}</span>
+        <span className="text-xl font-bold text-primary-600 dark:text-primary-400">{price} EGP</span>
       </div>
     </div>
   );
